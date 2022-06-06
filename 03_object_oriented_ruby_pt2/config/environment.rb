@@ -1,10 +1,7 @@
 # require is like an import statement except it loads all methods from the required file (not just the default export)
-
-# require pry so we can use binding.pry within our code
-require "pry"
-# require "require_all" so we're able to load all files in the
-# lib directory all at once
-require "require_all"
+require "bundler/setup"
+# Here we're calling a method that requires all of the ruby gems in the default environment (not in a group like development or test) For our purposes, this will load require_all and pry so that we can use `require_all` and `binding.pry` within our code
+Bundler.require(:default)
 
 # add the ability to print colored strings
 require "colorize"
