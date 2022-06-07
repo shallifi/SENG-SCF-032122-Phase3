@@ -91,7 +91,7 @@ def handle_choice(choice)
   end
 end
 
-# ✅ Refactor
+# ✅ Refactored
 
 # `choose_dog_from_collection` will:
 #  - accept an array of dog instances as an argument
