@@ -121,10 +121,12 @@ end
 
 def walk_dog(dogs)
   dog = choose_dog_from_collection(dogs)
-  dog.save 
-  # add a call to save here so that the change to the dog's last_walked_at time is persisted
   dog.walk
+  # add a call to save here so that the change to the dog's last_walked_at time is persisted
+  dog.save 
   dog.print
+  puts "#{dog.name} says thanks!".yellow
+  puts
 end
 
 
@@ -138,4 +140,6 @@ def feed_dog(dogs)
   # add a call to save here so that the change to the dog's last_fed_at time is persisted
   dog.save 
   dog.print
+  puts "#{dog.name} says thanks!".magenta
+  puts
 end

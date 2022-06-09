@@ -63,8 +63,8 @@ class Dog
     @birthdate = DateTime.parse(birthdate)
     @breed = breed
     @image_url = image_url
-    @last_walked_at = last_walked_at && DateTime.parse(last_walked_at)
-    @last_fed_at = last_fed_at && DateTime.parse(last_fed_at)
+    @last_walked_at = last_walked_at && Time.parse(last_walked_at).change(:offset => "-0700")
+    @last_fed_at = last_fed_at && Time.parse(last_fed_at).change(:offset => "-0700")
   end
 
   # The save method will insert a new row in the database for dogs that don't have an id and update the existing row in the database if the dog does have an id.
@@ -165,7 +165,7 @@ class Dog
   # Return true if the dog hasn't been walked (that we know of) or their last walk was longer than a set amount of time in the past, otherwise return false.
   def needs_a_walk?
     if last_walked_at
-      !last_walked_at.between?(10.seconds.ago, Time.now)
+      !last_walked_at.between?(4.hours.ago, Time.now)
     else
       true
     end
@@ -175,7 +175,7 @@ class Dog
   # Return true if the dog hasn't been fed (that we know of) or their last feeding was longer than a set amount of time in the past, otherwise return false
   def hungry?
     if last_fed_at
-      !last_fed_at.between?(15.seconds.ago, Time.now)
+      !last_fed_at.between?(6.hours.ago, Time.now)
     else
       true
     end
