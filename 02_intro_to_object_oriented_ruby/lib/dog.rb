@@ -7,7 +7,7 @@ class Dog
         @image_url = image_url
     end
 
-    attr_accessor :name, :breed, :age, :image_url
+    attr_accessor :name, :breed, :age, :image_url, :last_walked_at, :last_fed_at
 
     def walk
         @last_walked_at = Time.now
@@ -18,22 +18,29 @@ class Dog
     end
 
     def needs_a_walk?
-        if @last_walked_at
-            !@last_walked_at.between?(4.hours.ago, Time.now)
+        if last_walked_at
+            !last_walked_at.between?(4.hours.ago, Time.now)
         else
             true
         end
     end
 
-    def print_dog(dog_hash)
+    def hungry?
+        if last_fed_at
+            !last_fed_at.between?(4.hours.ago, Time.now)
+        else
+            true
+        end
+    end
+
+    def print 
         puts ""
-        puts dog_hash[:name].light_green
+        puts self.name.light_green
         puts "  Age: #{self.age}"
         puts "  Breed: #{self.breed}"
         puts "  Image_Url: #{self.image_url}"
         puts "  Last Feed At: #{self.last_fed_at}"
-        puts "  Last Walked At: #{self.last_walked_at"
-        # puts "  Favorite_treats: #{dog_hash[:favorite_treats]}"
+        puts "  Last Walked At: #{self.last_walked_at}"
         puts ""
       end
 
