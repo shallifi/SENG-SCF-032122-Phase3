@@ -63,8 +63,8 @@ class Dog
     @birthdate = DateTime.parse(birthdate)
     @breed = breed
     @image_url = image_url
-    @last_walked_at = last_walked_at && Time.parse(last_walked_at).change(:offset => "-0700")
-    @last_fed_at = last_fed_at && Time.parse(last_fed_at).change(:offset => "-0700")
+    @last_walked_at = last_walked_at && Time.parse(last_walked_at).change(:offset => "-0500")
+    @last_fed_at = last_fed_at && Time.parse(last_fed_at).change(:offset => "-0500")
   end
 
   # The save method will insert a new row in the database for dogs that don't have an id and update the existing row in the database if the dog does have an id.
